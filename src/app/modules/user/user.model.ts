@@ -8,7 +8,7 @@ import config from "../../../config";
 
 const UserSchema = new Schema<IUser, Record<string, never>, IUserLoginMethod>(
   {
-    username: { type: String, required: true },
+    name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     phone: { type: String, required: true },

@@ -12,9 +12,9 @@ const StudentSchema = new Schema<
       ref: "User",
       required: true,
     },
-    fullName: { type: String },
+    name: { type: String },
     email: { type: String },
-    contactNo: { type: String },
+    phone: { type: String },
     additionalInfo: {
       type: {
         age: { type: String },

@@ -31,9 +31,9 @@ export type Education = {
 };
 export type IStudents = {
   userId: Types.ObjectId | IUser;
-  fullName: string;
+  name: string;
   email: string;
-  contactNo: string;
+  phone: string;
   additionalInfo: AdditionalInfo;
   address:Address;
   education: Education;

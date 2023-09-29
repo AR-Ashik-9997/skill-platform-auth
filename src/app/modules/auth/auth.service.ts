@@ -13,16 +13,16 @@ import {
 import bcrypt from "bcrypt";
 import { Student } from "../students/student.model";
 
-const createUser = async (payload: IUser): Promise<IUser> => {
+
+const createUser = async (payload: IUser): Promise<IUser | null> => {
   const result = await User.create(payload);
-  const user = new User();
-  const isExistUser = await user.isExistEmail(payload.email);
-  if (isExistUser) {
-    await Student.updateOne(
-      { email: payload.email },
-      { email: payload.email, contactNo: payload.phone },
-      { new: true }
-    );
+  if (result) {
+    await Student.create({
+      userId: result._id,
+      name: result.name,
+      email: result.email,
+      phone: result.phone,
+    });
   }
   return result;
 };
@@ -44,14 +44,14 @@ const LoginUser = async (payload: ILoginUser): Promise<IUserLoginResponse> => {
   const { _id } = (await User.findOne({ email: email }, { _id: 1 }).lean()) as {
     _id: string;
   };
-  const { role, email: useremail, username } = isExistUser;
+  const { role, email: useremail, name } = isExistUser;
   const accessToken = jwtHelper.createToken(
-    { _id, role, useremail, username },
+    { _id, role, useremail, name },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string
   );
   const refreshToken = jwtHelper.createToken(
-    { _id, role, useremail, username },
+    { _id, role, useremail, name },
     config.jwt.refresh_secret as Secret,
     config.jwt.refresh_expires_in as string
   );
