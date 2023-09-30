@@ -1,7 +1,6 @@
 import { Secret } from "jsonwebtoken";
 import config from "../../../config";
 import { jwtHelper } from "../../../helper/jwtHelper";
-import { IUser } from "../user/user.interface";
 import { User } from "../user/user.model";
 import ApiError from "../../../eroors/apiErrorHandler";
 import httpStatus from "http-status";
@@ -11,21 +10,8 @@ import {
   IUserLoginResponse,
 } from "./auth.interface";
 import bcrypt from "bcrypt";
-import { Student } from "../students/student.model";
 
 
-const createUser = async (payload: IUser): Promise<IUser | null> => {
-  const result = await User.create(payload);
-  if (result) {
-    await Student.create({
-      userId: result._id,
-      name: result.name,
-      email: result.email,
-      phone: result.phone,
-    });
-  }
-  return result;
-};
 
 const LoginUser = async (payload: ILoginUser): Promise<IUserLoginResponse> => {
   const { email, password } = payload;
@@ -85,7 +71,6 @@ const RefreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
 };
 
 export const authService = {
-  createUser,
   LoginUser,
   RefreshToken,
 };

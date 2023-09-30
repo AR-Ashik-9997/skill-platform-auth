@@ -4,7 +4,6 @@ import { IStudents } from "./student.interface";
 import { sendResponse } from "../../../shared/sendResponseApi";
 import httpStatus from "http-status";
 import { StudentService } from "./student.service";
-import { User } from "../user/user.model";
 import { JwtPayload } from "jsonwebtoken";
 
 const getAllStudent = catchAsync(async (req: Request, res: Response) => {

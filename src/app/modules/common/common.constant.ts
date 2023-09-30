@@ -1,16 +1,16 @@
-import { IStudentCountries, IStudentInstitute } from './student.interface';
+import { ICommonCountries, ICommonInstitute } from "./common.interface";
 
-export const IStudentAge = ['10-15', '15-20', '20-25', '25-30', '30+'];
-export const IStudentGender = ['male', 'female'];
-export const IStudentDevice = ['Mobile', 'Tab', 'Laptop', 'Desktop'];
-export const IStudentInternetType = ['Mobile', 'Broadband'];
-export const IStudentExperience = ['1', '2', '3', '4', '5', '6', '7+'];
-export const IStudentArea = ['Town', 'Village'];
-export const IStudentStatus = ['Yes', 'No'];
-export const IStudentJobType = ['Full-Time', 'Part-Time', 'Intern'];
-export const IStudentJobPreference = ['Remotely', 'On-Office', 'Both'];
-export const IStudentJobExperience = ['Yes', 'No'];
-export const IStudentLevel = [
+export const ICommonAge = ['10-15', '15-20', '20-25', '25-30', '30+'];
+export const ICommonGender = ['male', 'female'];
+export const ICommonDevice = ['Mobile', 'Tab', 'Laptop', 'Desktop'];
+export const ICommonInternetType = ['Mobile', 'Broadband'];
+export const ICommonExperience = ['1', '2', '3', '4', '5', '6', '7+'];
+export const ICommonArea = ['Town', 'Village'];
+export const ICommonStatus = ['Yes', 'No'];
+export const ICommonJobType = ['Full-Time', 'Part-Time', 'Intern'];
+export const ICommonJobPreference = ['Remotely', 'On-Office', 'Both'];
+export const ICommonJobExperience = ['Yes', 'No'];
+export const ICommonLevel = [
   'JSC/JDC/8pass',
   'Secondary',
   'Higher Secondary',
@@ -19,7 +19,7 @@ export const IStudentLevel = [
   'Masters',
   'PhD (Doctor of Philosophy)'
 ];
-export const Countries: IStudentCountries[] = [
+export const Countries: ICommonCountries[] = [
   'Afghanistan',
   'Albania',
   'Algeria',
@@ -219,7 +219,7 @@ export const Countries: IStudentCountries[] = [
   'Zimbabwe',
 ];
 
-export const Institutes: IStudentInstitute[] = [
+export const Institutes: ICommonInstitute[] = [
   'University of Dhaka',
   'University of Rajshahi	',
   'Bangladesh Agricultural University	',

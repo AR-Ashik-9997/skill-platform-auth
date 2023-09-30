@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 export enum ENUM_USER_ROLE {
-  STUDENT = "student",
+  SUPER_ADMIN = "super_admin",
   ADMIN = "admin",
+  TEACHER = "teacher",
+  STUDENT = "student",
 }

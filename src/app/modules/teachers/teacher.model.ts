@@ -1,5 +1,6 @@
+import { ITeachers, TeacherModel } from "./teacher.interface";
 import { Schema, model } from "mongoose";
-import { IStudents, StudentModel } from "./student.interface";
+
 import {
   Countries,
   ICommonAge,
@@ -16,10 +17,10 @@ import {
   Institutes,
 } from "../common/common.constant";
 
-const StudentSchema = new Schema<
-  IStudents,
+const TeacherSchema = new Schema<
+  ITeachers,
   Record<string, never>,
-  StudentModel
+  TeacherModel
 >(
   {
     userId: {
@@ -56,6 +57,7 @@ const StudentSchema = new Schema<
         pasingyear: { type: String },
       },
     },
+    designation: { type: String },
     job: {
       type: {
         status: { type: String, enum: ICommonStatus },
@@ -72,4 +74,4 @@ const StudentSchema = new Schema<
     },
   }
 );
-export const Student = model<IStudents, StudentModel>("Student", StudentSchema);
+export const Teacher = model<ITeachers, TeacherModel>("Teachers", TeacherSchema);

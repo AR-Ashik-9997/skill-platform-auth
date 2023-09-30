@@ -1,13 +1,13 @@
 import { Model, Types } from "mongoose";
-import { IUser } from "../user/user.interface";
 import {
   AdditionalInfo,
   Address,
   Education,
   Job,
 } from "../common/common.interface";
+import { IUser } from "../user/user.interface";
 
-export type IStudents = {
+export type ITeachers = {
   userId: Types.ObjectId | IUser;
   name: string;
   email: string;
@@ -15,7 +15,8 @@ export type IStudents = {
   additionalInfo: AdditionalInfo;
   address: Address;
   education: Education;
+  designation: "Professor" | "Lecturer";
   job: Job;
 };
 
-export type StudentModel = Model<IStudents, Record<string, unknown>>;
+export type TeacherModel = Model<ITeachers, Record<string, unknown>>;

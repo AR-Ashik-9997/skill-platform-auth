@@ -15,7 +15,7 @@ import {
   Institutes,
 } from "../common/common.constant";
 
-const UpdateStudentZodValidationSchema = z.object({
+const UpdateAdminZodValidationSchema = z.object({
   body: z.object({
     name: z.string().optional(),
     email: z.string().optional(),
@@ -58,8 +58,7 @@ const UpdateStudentZodValidationSchema = z.object({
           .optional(),
         jobPreference: z
           .enum([...ICommonJobPreference] as [string, ...string[]])
-          .optional(),
-
+          .optional(),        
         jobExperience: z
           .enum([...ICommonJobExperience] as [string, ...string[]])
           .optional(),
@@ -68,6 +67,6 @@ const UpdateStudentZodValidationSchema = z.object({
   }),
 });
 
-export const StudentValidation = {
-  UpdateStudentZodValidationSchema,
+export const adminValidation = {
+  UpdateAdminZodValidationSchema,
 };

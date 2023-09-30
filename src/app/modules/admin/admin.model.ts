@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { IStudents, StudentModel } from "./student.interface";
+
 import {
   Countries,
   ICommonAge,
@@ -15,11 +15,12 @@ import {
   ICommonStatus,
   Institutes,
 } from "../common/common.constant";
+import { AdminModel, IAdmins } from "./admin.interface";
 
-const StudentSchema = new Schema<
-  IStudents,
+const AdminSchema = new Schema<
+  IAdmins,
   Record<string, never>,
-  StudentModel
+  AdminModel
 >(
   {
     userId: {
@@ -55,7 +56,7 @@ const StudentSchema = new Schema<
         institute: { type: String, enum: Institutes },
         pasingyear: { type: String },
       },
-    },
+    },    
     job: {
       type: {
         status: { type: String, enum: ICommonStatus },
@@ -72,4 +73,4 @@ const StudentSchema = new Schema<
     },
   }
 );
-export const Student = model<IStudents, StudentModel>("Student", StudentSchema);
+export const Admin = model<IAdmins, AdminModel>("Admin", AdminSchema);

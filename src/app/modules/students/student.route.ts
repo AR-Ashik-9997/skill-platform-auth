@@ -6,17 +6,21 @@ import { ENUM_USER_ROLE } from "../../enum/user";
 import { StudentValidation } from "./student.validation";
 
 const router = express.Router();
-router.get("/", StudentController.getAllStudent);
+router.get(
+  "/",
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.TEACHER, ENUM_USER_ROLE.STUDENT),
+  StudentController.getAllStudent
+);
 router.get(
   "/:id",
-  auth(ENUM_USER_ROLE.STUDENT),
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.STUDENT),
   StudentController.getSingleStudent
 );
 
 router.patch(
   "/update",
   requestValidation(StudentValidation.UpdateStudentZodValidationSchema),
-  auth(ENUM_USER_ROLE.STUDENT),
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.STUDENT),
   StudentController.getUpdateStudent
 );
 router.delete(
