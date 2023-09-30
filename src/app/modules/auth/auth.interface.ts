@@ -9,5 +9,10 @@ export type ILoginUser = {
 
 export type IUserLoginResponse = {
   accessToken: string;
-  refreshToken?: string;   
+  refreshToken?: string;
+};
+
+export type IChangePassword = {
+  oldPassword: string;
+  newPassword: string;
 };

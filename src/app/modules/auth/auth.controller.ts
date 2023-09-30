@@ -4,7 +4,11 @@ import { authService } from "./auth.service";
 import httpStatus from "http-status";
 import config from "../../../config";
 import { IRefreshTokenResponse, IUserLoginResponse } from "./auth.interface";
-import { sendLoginResponse } from "../../../shared/sendResponseApi";
+import {
+  sendLoginResponse,
+  sendResponse,
+} from "../../../shared/sendResponseApi";
+import { JwtPayload } from "jsonwebtoken";
 
 const LoginUser = catchAsync(async (req: Request, res: Response) => {
   const { ...loginData } = req.body;
@@ -41,4 +45,16 @@ const refreshToken = catchAsync(async (req: Request, res: Response) => {
     token: result.accessToken as any,
   });
 });
-export const authController = { LoginUser, refreshToken };
+
+const changedPassword = catchAsync(async (req: Request, res: Response) => {
+  const user: JwtPayload = req.user!;
+  const { ...passwordData } = req.body;
+  console.log(passwordData);
+  await authService.changedPassword(user, passwordData);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Password changed successfully !",
+  });
+});
+export const authController = { LoginUser, refreshToken, changedPassword };

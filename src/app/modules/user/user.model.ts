@@ -41,9 +41,10 @@ UserSchema.methods.isExistEmail = async function (
 ): Promise<Partial<IUser> | null> {
   return await User.findOne(
     { email },
-    { role: 1, password: 1, email: 1, phone: 1 }
+    { role: 1, password: 1, email: 1, name: 1 }
   ).lean();
 };
+
 UserSchema.set("toJSON", {
   transform: function (doc, ret) {
     delete ret.password; // Exclude the password field from the response

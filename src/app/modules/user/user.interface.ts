@@ -2,7 +2,7 @@
 import { Model } from "mongoose";
 
 export type IUser = {
-  id:string;
+  id: string;
   name: string;
   email: string;
   password: string;
@@ -13,8 +13,4 @@ export type IUser = {
 export type IUserLoginMethod = {
   isExistEmail(email: string): Promise<Partial<IUser> | null>;
 };
-export type UserModel = Model<
-  IUser,
-  Record<string, unknown>,
-  IUserLoginMethod
->;
+export type UserModel = Model<IUser, Record<string, unknown>, IUserLoginMethod>;
