@@ -28,9 +28,10 @@ const TeacherSchema = new Schema<
       ref: "User",
       required: true,
     },
-    name: { type: String },
-    email: { type: String },
-    phone: { type: String },
+    teacherId: { type: String, required: true },
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
     additionalInfo: {
       type: {
         age: { type: String, enum: ICommonAge },
@@ -74,4 +75,7 @@ const TeacherSchema = new Schema<
     },
   }
 );
-export const Teacher = model<ITeachers, TeacherModel>("Teachers", TeacherSchema);
+export const Teacher = model<ITeachers, TeacherModel>(
+  "Teachers",
+  TeacherSchema
+);

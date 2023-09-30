@@ -9,6 +9,7 @@ import {
 
 export type IStudents = {
   userId: Types.ObjectId | IUser;
+  studentId: string;
   name: string;
   email: string;
   phone: string;

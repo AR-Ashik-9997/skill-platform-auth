@@ -9,6 +9,7 @@ import { IUser } from "../user/user.interface";
 
 export type ITeachers = {
   userId: Types.ObjectId | IUser;
+  teacherId:string;
   name: string;
   email: string;
   phone: string;

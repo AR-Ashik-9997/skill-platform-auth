@@ -31,7 +31,7 @@ const createAdmin = catchAsync(async (req: Request, res: Response) => {
   sendResponse<IUser>(res, {
     success: true,
     statusCode: httpStatus.OK,
-    message: "User created and teacher profile update successfully",
+    message: "User created and admin profile update successfully",
     data: result,
   });
 });

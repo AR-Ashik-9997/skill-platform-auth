@@ -17,20 +17,18 @@ import {
 } from "../common/common.constant";
 import { AdminModel, IAdmins } from "./admin.interface";
 
-const AdminSchema = new Schema<
-  IAdmins,
-  Record<string, never>,
-  AdminModel
->(
+const AdminSchema = new Schema<IAdmins, Record<string, never>, AdminModel>(
   {
     userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    name: { type: String },
-    email: { type: String },
-    phone: { type: String },
+
+    adminId: { type: String, required: true },
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
     additionalInfo: {
       type: {
         age: { type: String, enum: ICommonAge },
@@ -56,7 +54,7 @@ const AdminSchema = new Schema<
         institute: { type: String, enum: Institutes },
         pasingyear: { type: String },
       },
-    },    
+    },
     job: {
       type: {
         status: { type: String, enum: ICommonStatus },

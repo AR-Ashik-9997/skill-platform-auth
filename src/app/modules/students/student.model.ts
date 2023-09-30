@@ -27,9 +27,10 @@ const StudentSchema = new Schema<
       ref: "User",
       required: true,
     },
-    name: { type: String },
-    email: { type: String },
-    phone: { type: String },
+    studentId:{ type: String,required:true },
+    name: { type: String,required:true },
+    email: { type: String,required:true },
+    phone: { type: String,required:true },
     additionalInfo: {
       type: {
         age: { type: String, enum: ICommonAge },

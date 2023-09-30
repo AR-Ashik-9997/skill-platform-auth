@@ -9,6 +9,7 @@ import { IUser } from "../user/user.interface";
 
 export type IAdmins = {
   userId: Types.ObjectId | IUser;
+  adminId:string;
   name: string;
   email: string;
   phone: string;
