@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
-import { Admin } from "../admin/admin.model";
+
 import { Student } from "../students/student.model";
 import { Teacher } from "../teachers/teacher.model";
 import { IUser } from "./user.interface";
 import { User } from "./user.model";
 import { generateAdminId, generateStudentId, generateTeacherId } from "./utils";
+import { Admin } from "../admin/admin.model";
 
 const createStudent = async (payload: IUser): Promise<IUser | null> => {
   let result = null;

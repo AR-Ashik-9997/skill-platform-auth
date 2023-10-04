@@ -15,13 +15,13 @@ router.post(
 router.post(
   "/create-teacher",
   requestValidation(UserValidation.createUserzodValidationSchema),
-  auth(ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN,ENUM_USER_ROLE.SUPER_ADMIN),
   userController.createTeacher
 );
 router.post(
   "/create-admin",
   requestValidation(UserValidation.createUserzodValidationSchema),
-  auth(ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN),
   userController.createAdmin
 );
 
