@@ -27,10 +27,10 @@ const StudentSchema = new Schema<
       ref: "User",
       required: true,
     },
-    studentId:{ type: String,required:true },
-    name: { type: String,required:true },
-    email: { type: String,required:true },
-    phone: { type: String,required:true },
+    studentId: { type: String, required: true },
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
     additionalInfo: {
       type: {
         age: { type: String, enum: ICommonAge },
@@ -65,6 +65,7 @@ const StudentSchema = new Schema<
         jobExperience: { type: String, enum: ICommonJobExperience },
       },
     },
+    profile: { type: String, trim: true },
   },
   {
     timestamps: true,

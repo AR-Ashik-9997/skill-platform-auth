@@ -30,17 +30,9 @@ const getUpdateAdmin = async (
     return result;
   }
 };
-const DeleteAdmin = async (id: string): Promise<ISuperAdmin | null> => {
-  const existingAdmin = await SuperAdmin.findOne({ id });
-  if (!existingAdmin) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Super Admin not found");
-  }
-  const result = await SuperAdmin.findByIdAndDelete(id);
-  return result;
-};
+
 
 export const superAdminService = {
   getSingleAdmin,
   getUpdateAdmin,
-  DeleteAdmin,
 };

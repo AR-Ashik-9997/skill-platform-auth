@@ -29,19 +29,9 @@ const getUpdateAdmin = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
-const DeleteAdmin = catchAsync(async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const result = await superAdminService.DeleteAdmin(id);
-  sendResponse<ISuperAdmin>(res, {
-    success: true,
-    statusCode: httpStatus.OK,
-    message: "Update Admin retrived successfully",
-    data: result,
-  });
-});
+
 
 export const superAdminController = {
   getSingleAdmin,
   getUpdateAdmin,
-  DeleteAdmin,
 };

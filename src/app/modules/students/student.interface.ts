@@ -17,6 +17,7 @@ export type IStudents = {
   address: Address;
   education: Education;
   job: Job;
+  profile?:string;
 };
 
 export type StudentModel = Model<IStudents, Record<string, unknown>>;

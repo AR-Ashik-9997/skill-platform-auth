@@ -17,10 +17,5 @@ router.patch(
   auth(ENUM_USER_ROLE.SUPER_ADMIN),
   superAdminController.getUpdateAdmin
 );
-router.delete(
-  "/delete/:id",
-  auth(ENUM_USER_ROLE.SUPER_ADMIN),
-  superAdminController.DeleteAdmin
-);
 
 export const superAdminRoute = router;

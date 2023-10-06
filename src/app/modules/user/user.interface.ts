@@ -7,7 +7,7 @@ export type IUser = {
   email: string;
   password: string;
   role: string;
-  phone: string;
+  phone: string;  
 };
 
 export type IUserLoginMethod = {
