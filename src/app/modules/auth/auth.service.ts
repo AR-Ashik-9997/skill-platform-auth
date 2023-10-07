@@ -1,29 +1,29 @@
-import { JwtPayload, Secret } from "jsonwebtoken";
-import config from "../../../config";
-import { jwtHelper } from "../../../helper/jwtHelper";
-import { User } from "../user/user.model";
-import ApiError from "../../../eroors/apiErrorHandler";
-import httpStatus from "http-status";
+import { JwtPayload, Secret } from 'jsonwebtoken';
+import config from '../../../config';
+import { jwtHelper } from '../../../helper/jwtHelper';
+import { User } from '../user/user.model';
+import ApiError from '../../../eroors/apiErrorHandler';
+import httpStatus from 'http-status';
 import {
   IChangePassword,
   ILoginUser,
   IRefreshTokenResponse,
   IUserLoginResponse,
-} from "./auth.interface";
-import bcrypt from "bcrypt";
+} from './auth.interface';
+import bcrypt from 'bcrypt';
 
 const LoginUser = async (payload: ILoginUser): Promise<IUserLoginResponse> => {
   const { email, password } = payload;
   const user = new User();
   const isExistUser = await user.isExistEmail(email);
   if (!isExistUser) {
-    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
   if (
     isExistUser?.password &&
     !(await bcrypt.compare(password, isExistUser?.password))
   ) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, "password is incorrect");
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'password is incorrect');
   }
 
   const { id: userId, _id } = (await User.findOne(
@@ -55,14 +55,14 @@ const RefreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
       config.jwt.refresh_secret as Secret
     );
   } catch (err) {
-    throw new ApiError(httpStatus.FORBIDDEN, "invalid refresh token");
+    throw new ApiError(httpStatus.FORBIDDEN, 'invalid refresh token');
   }
 
   const { _id: ids } = verified;
 
   const isExistUser = await User.findById(ids);
   if (!isExistUser) {
-    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
   const { _id, id: userId, role, email, name } = isExistUser;
   const newAccessToken = jwtHelper.createToken(
@@ -78,16 +78,16 @@ const changedPassword = async (
 ): Promise<void> => {
   const { oldPassword, newPassword } = payload;
   const isExistUser = await User.findOne({ id: user?.userId }).select(
-    "password"
+    'password'
   );
   if (!isExistUser) {
-    throw new ApiError(httpStatus.NOT_FOUND, "User not found");
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
   if (
     isExistUser?.password &&
     !(await bcrypt.compare(oldPassword, isExistUser?.password))
   ) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, "password is incorrect");
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'password is incorrect');
   }
   const hashedPassword = await bcrypt.hash(
     newPassword,

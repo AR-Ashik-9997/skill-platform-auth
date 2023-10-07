@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 import {
   Countries,
@@ -14,8 +14,8 @@ import {
   ICommonLevel,
   ICommonStatus,
   Institutes,
-} from "../common/common.constant";
-import { SuperAdminModel, ISuperAdmin } from "./superAdmin.interface";
+} from '../common/common.constant';
+import { SuperAdminModel, ISuperAdmin } from './superAdmin.interface';
 
 const SuperAdminSchema = new Schema<
   ISuperAdmin,
@@ -25,7 +25,7 @@ const SuperAdminSchema = new Schema<
   {
     userId: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
 
@@ -76,6 +76,6 @@ const SuperAdminSchema = new Schema<
   }
 );
 export const SuperAdmin = model<ISuperAdmin, SuperAdminModel>(
-  "superAdmin",
+  'superAdmin',
   SuperAdminSchema
 );

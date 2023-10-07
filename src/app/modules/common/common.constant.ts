@@ -1,4 +1,4 @@
-import { ICommonCountries, ICommonInstitute } from "./common.interface";
+import { ICommonCountries, ICommonInstitute } from './common.interface';
 
 export const ICommonAge = ['10-15', '15-20', '20-25', '25-30', '30+'];
 export const ICommonGender = ['male', 'female'];
@@ -17,7 +17,7 @@ export const ICommonLevel = [
   'Diploma',
   'Bachelor/Honors',
   'Masters',
-  'PhD (Doctor of Philosophy)'
+  'PhD (Doctor of Philosophy)',
 ];
 export const Countries: ICommonCountries[] = [
   'Afghanistan',

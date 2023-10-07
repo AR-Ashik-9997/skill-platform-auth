@@ -1,39 +1,39 @@
-import express from "express";
-import { AuthRoute } from "../modules/auth/auth.route";
-import { StudentRoute } from "../modules/students/student.route";
-import { UserRoute } from "../modules/user/user.route";
-import { TeacherRoute } from "../modules/teachers/teacher.route";
-import { AdminRoute } from "../modules/admin/admin.route";
-import { superAdminRoute } from "../modules/superAdmin/superAdmin.route";
+import express from 'express';
+import { AuthRoute } from '../modules/auth/auth.route';
+import { StudentRoute } from '../modules/students/student.route';
+import { UserRoute } from '../modules/user/user.route';
+import { TeacherRoute } from '../modules/teachers/teacher.route';
+import { AdminRoute } from '../modules/admin/admin.route';
+import { superAdminRoute } from '../modules/superAdmin/superAdmin.route';
 
 const router = express.Router();
 
 const moduleRoutes = [
   {
-    path: "/auth",
+    path: '/auth',
     route: AuthRoute,
   },
   {
-    path: "/superAdmin",
+    path: '/superAdmin',
     route: superAdminRoute,
   },
   {
-    path: "/admin",
+    path: '/admin',
     route: AdminRoute,
   },
   {
-    path: "/user",
+    path: '/user',
     route: UserRoute,
   },
   {
-    path: "/student",
+    path: '/student',
     route: StudentRoute,
   },
   {
-    path: "/teacher",
+    path: '/teacher',
     route: TeacherRoute,
   },
 ];
-moduleRoutes.forEach((route) => router.use(route.path, route.route));
+moduleRoutes.forEach(route => router.use(route.path, route.route));
 
 export default router;

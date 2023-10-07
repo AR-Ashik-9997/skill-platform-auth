@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose";
-import { IStudents, StudentModel } from "./student.interface";
+import { Schema, model } from 'mongoose';
+import { IStudents, StudentModel } from './student.interface';
 import {
   Countries,
   ICommonAge,
@@ -14,7 +14,7 @@ import {
   ICommonLevel,
   ICommonStatus,
   Institutes,
-} from "../common/common.constant";
+} from '../common/common.constant';
 
 const StudentSchema = new Schema<
   IStudents,
@@ -24,7 +24,7 @@ const StudentSchema = new Schema<
   {
     userId: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     studentId: { type: String, required: true },
@@ -74,4 +74,4 @@ const StudentSchema = new Schema<
     },
   }
 );
-export const Student = model<IStudents, StudentModel>("Student", StudentSchema);
+export const Student = model<IStudents, StudentModel>('Student', StudentSchema);

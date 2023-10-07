@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 import {
   Countries,
   ICommonAge,
@@ -13,7 +13,7 @@ import {
   ICommonLevel,
   ICommonStatus,
   Institutes,
-} from "../common/common.constant";
+} from '../common/common.constant';
 
 const UpdateTeacherZodValidationSchema = z.object({
   body: z.object({

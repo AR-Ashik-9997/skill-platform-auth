@@ -1,7 +1,7 @@
-import { User } from "./user.model";
+import { User } from './user.model';
 
 export const findLastStudent = async (): Promise<string | undefined> => {
-  const lastStudent = await User.findOne({ role: "student" }, { id: 1, _id: 0 })
+  const lastStudent = await User.findOne({ role: 'student' }, { id: 1, _id: 0 })
     .sort({
       createdAt: -1,
     })
@@ -15,7 +15,7 @@ export const generateStudentId = async (): Promise<string> => {
   return generateId;
 };
 export const findLastTeacher = async (): Promise<string | undefined> => {
-  const lastTeacher = await User.findOne({ role: "teacher" }, { id: 1, _id: 0 })
+  const lastTeacher = await User.findOne({ role: 'teacher' }, { id: 1, _id: 0 })
     .sort({
       createdAt: -1,
     })
@@ -30,7 +30,7 @@ export const generateTeacherId = async (): Promise<string> => {
 };
 
 export const findLastAdmin = async (): Promise<string | undefined> => {
-  const lastAdmin = await User.findOne({ role: "admin" }, { id: 1, _id: 0 })
+  const lastAdmin = await User.findOne({ role: 'admin' }, { id: 1, _id: 0 })
     .sort({
       createdAt: -1,
     })

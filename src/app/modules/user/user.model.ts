@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
-import { Schema, model } from "mongoose";
-import { IUser, IUserLoginMethod, UserModel } from "./user.interface";
-import ApiError from "../../../eroors/apiErrorHandler";
-import httpStatus from "http-status";
-import bcrypt from "bcrypt";
-import config from "../../../config";
+import { Schema, model } from 'mongoose';
+import { IUser, IUserLoginMethod, UserModel } from './user.interface';
+import ApiError from '../../../eroors/apiErrorHandler';
+import httpStatus from 'http-status';
+import bcrypt from 'bcrypt';
+import config from '../../../config';
 
 const UserSchema = new Schema<IUser, Record<string, never>, IUserLoginMethod>(
   {
@@ -22,7 +22,7 @@ const UserSchema = new Schema<IUser, Record<string, never>, IUserLoginMethod>(
     },
   }
 );
-UserSchema.pre("save", async function (next) {
+UserSchema.pre('save', async function (next) {
   const user = this;
   const isExist = await User.findOne({
     email: user.email,
@@ -32,7 +32,7 @@ UserSchema.pre("save", async function (next) {
     Number(config.bcrypt_salt_round)
   );
   if (isExist) {
-    throw new ApiError(httpStatus.CONFLICT, "user is already exists !");
+    throw new ApiError(httpStatus.CONFLICT, 'user is already exists !');
   }
   next();
 });
@@ -45,10 +45,10 @@ UserSchema.methods.isExistEmail = async function (
   ).lean();
 };
 
-UserSchema.set("toJSON", {
+UserSchema.set('toJSON', {
   transform: function (doc, ret) {
     delete ret.password; // Exclude the password field from the response
     return ret;
   },
 });
-export const User = model<IUser, UserModel>("User", UserSchema);
+export const User = model<IUser, UserModel>('User', UserSchema);

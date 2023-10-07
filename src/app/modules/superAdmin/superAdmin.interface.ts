@@ -1,11 +1,11 @@
-import { Model, Types } from "mongoose";
+import { Model, Types } from 'mongoose';
 import {
   AdditionalInfo,
   Address,
   Education,
   Job,
-} from "../common/common.interface";
-import { IUser } from "../user/user.interface";
+} from '../common/common.interface';
+import { IUser } from '../user/user.interface';
 
 export type ISuperAdmin = {
   userId: Types.ObjectId | IUser;

@@ -1,24 +1,24 @@
-import express from "express";
-import requestValidation from "../../../middleware/requestValidation";
+import express from 'express';
+import requestValidation from '../../../middleware/requestValidation';
 
-import { authController } from "./auth.controller";
-import { AuthValidation } from "./auth.validation";
-import auth from "../../../middleware/auth";
-import { ENUM_USER_ROLE } from "../../enum/user";
+import { authController } from './auth.controller';
+import { AuthValidation } from './auth.validation';
+import auth from '../../../middleware/auth';
+import { ENUM_USER_ROLE } from '../../enum/user';
 
 const router = express.Router();
 router.post(
-  "/login",
+  '/login',
   requestValidation(AuthValidation.UserLoginzodValidationSchema),
   authController.LoginUser
 );
 router.post(
-  "/refresh-token",
+  '/refresh-token',
   requestValidation(AuthValidation.refreshTokenZodSchema),
   authController.refreshToken
 );
 router.post(
-  "/change-password",
+  '/change-password',
   requestValidation(AuthValidation.changePasswordZodSchema),
   auth(
     ENUM_USER_ROLE.SUPER_ADMIN,
