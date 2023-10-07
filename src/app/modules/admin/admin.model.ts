@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 import {
   Countries,
@@ -14,14 +14,14 @@ import {
   ICommonLevel,
   ICommonStatus,
   Institutes,
-} from "../common/common.constant";
-import { AdminModel, IAdmins } from "./admin.interface";
+} from '../common/common.constant';
+import { AdminModel, IAdmins } from './admin.interface';
 
 const AdminSchema = new Schema<IAdmins, Record<string, never>, AdminModel>(
   {
     userId: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
 
@@ -63,6 +63,7 @@ const AdminSchema = new Schema<IAdmins, Record<string, never>, AdminModel>(
         jobExperience: { type: String, enum: ICommonJobExperience },
       },
     },
+    profile: { type: String, trim: true },
   },
   {
     timestamps: true,
@@ -71,4 +72,4 @@ const AdminSchema = new Schema<IAdmins, Record<string, never>, AdminModel>(
     },
   }
 );
-export const Admin = model<IAdmins, AdminModel>("Admin", AdminSchema);
+export const Admin = model<IAdmins, AdminModel>('Admin', AdminSchema);

@@ -1,5 +1,5 @@
-import { ITeachers, TeacherModel } from "./teacher.interface";
-import { Schema, model } from "mongoose";
+import { ITeachers, TeacherModel } from './teacher.interface';
+import { Schema, model } from 'mongoose';
 
 import {
   Countries,
@@ -15,7 +15,7 @@ import {
   ICommonLevel,
   ICommonStatus,
   Institutes,
-} from "../common/common.constant";
+} from '../common/common.constant';
 
 const TeacherSchema = new Schema<
   ITeachers,
@@ -25,7 +25,7 @@ const TeacherSchema = new Schema<
   {
     userId: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     teacherId: { type: String, required: true },
@@ -34,28 +34,28 @@ const TeacherSchema = new Schema<
     phone: { type: String, required: true },
     additionalInfo: {
       type: {
-        age: { type: String, enum: ICommonAge },
-        gender: { type: String, enum: ICommonGender },
+        age: { type: String, enum: ICommonAge, required: true },
+        gender: { type: String, enum: ICommonGender, required: true },
         device: { type: String, enum: ICommonDevice },
         internetType: { type: String, enum: ICommonInternetType },
-        experience: { type: String, enum: ICommonExperience },
+        experience: { type: String, enum: ICommonExperience, required: true },
         employmentRole: { type: String },
-        area: { type: String, enum: ICommonArea },
+        area: { type: String, enum: ICommonArea, required: true },
       },
     },
     address: {
       type: {
-        country: { type: String, enum: Countries },
-        district: { type: String },
-        streetAddress: { type: String },
+        country: { type: String, enum: Countries, required: true },
+        district: { type: String, required: true },
+        streetAddress: { type: String, required: true },
       },
     },
     education: {
       type: {
         level: { type: String, enum: ICommonLevel },
-        degreeTitle: { type: String },
-        institute: { type: String, enum: Institutes },
-        pasingyear: { type: String },
+        degreeTitle: { type: String, required: true },
+        institute: { type: String, enum: Institutes, required: true },
+        pasingyear: { type: String, required: true },
       },
     },
     designation: { type: String },
@@ -67,6 +67,7 @@ const TeacherSchema = new Schema<
         jobExperience: { type: String, enum: ICommonJobExperience },
       },
     },
+    profile: { type: String, trim: true },
   },
   {
     timestamps: true,
@@ -76,6 +77,6 @@ const TeacherSchema = new Schema<
   }
 );
 export const Teacher = model<ITeachers, TeacherModel>(
-  "Teachers",
+  'Teachers',
   TeacherSchema
 );
